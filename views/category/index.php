@@ -12,7 +12,7 @@ use jarrus90\Multilang\Models\Language;
  * @var ActiveDataProvider $dataProvider
  */
 ?>
-<?php $this->beginContent('@jarrus90/Support/views/_adminLayout.php') ?>
+<?php $this->beginContent('@jarrus90/Support/views/_adminFaqLayout.php') ?>
 <?=
 GridView::widget([
     'dataProvider' => $dataProvider,

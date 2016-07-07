@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /**
  * @var View $this
  */
-$this->beginContent('@jarrus90/Support/views/_adminLayout.php');
+$this->beginContent('@jarrus90/Support/views/_adminFaqLayout.php');
 $this->title = Yii::t('support', 'Check inexistent categories variants');
 $this->params['breadcrumbs'][] = $this->title;
 ?>

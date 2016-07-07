@@ -22,12 +22,6 @@ Nav::widget([
             'url' => ['/support/category/index'],
             'active' => (Yii::$app->controller instanceof jarrus90\Support\Controllers\CategoryController),
             'visible' => Yii::$app->user->can('support_publisher')
-        ],
-        [
-            'label' => Yii::t('support', 'Blocks'),
-            'url' => ['/support/block/index'],
-            'active' => (Yii::$app->controller instanceof jarrus90\Support\Controllers\BlockController),
-            'visible' => Yii::$app->user->can('support_publisher')
         ]
     ],
 ]);

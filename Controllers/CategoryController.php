@@ -61,6 +61,7 @@ class CategoryController extends AdminCrudAbstract {
     public function beforeAction($action) {
         if(parent::beforeAction($action)) {
             Yii::$app->view->params['breadcrumbs'][] = Yii::t('support', 'Support');
+            Yii::$app->view->params['breadcrumbs'][] = ['label' => Yii::t('support', 'FAQ'), 'url' => ['index']];
             Yii::$app->view->params['breadcrumbs'][] = ['label' => Yii::t('support', 'Categories'), 'url' => ['index']];
             return true;
         }

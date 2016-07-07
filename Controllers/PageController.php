@@ -60,7 +60,7 @@ class PageController extends AdminCrudAbstract {
     public function beforeAction($action) {
         if(parent::beforeAction($action)) {
             Yii::$app->view->params['breadcrumbs'][] = Yii::t('support', 'Support');
-            Yii::$app->view->params['breadcrumbs'][] = ['label' => Yii::t('support', 'Pages'), 'url' => ['index']];
+            Yii::$app->view->params['breadcrumbs'][] = ['label' => Yii::t('support', 'FAQ'), 'url' => ['index']];
             return true;
         }
         return false;

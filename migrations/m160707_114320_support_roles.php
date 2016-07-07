@@ -2,7 +2,7 @@
 
 use jarrus90\User\migrations\RbacMigration;
 
-class m160706_075919_support_roles extends RbacMigration {
+class m160707_114320_support_roles extends RbacMigration {
 
     public function up() {
         

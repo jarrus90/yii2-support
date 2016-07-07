@@ -22,7 +22,6 @@ class Bootstrap implements BootstrapInterface {
             Yii::$container->setSingleton(SupportFinder::className(), [
                 'categoryQuery' => \jarrus90\Support\Models\Category::find(),
                 'pageQuery' => \jarrus90\Support\Models\Page::find(),
-                'blockQuery' => \jarrus90\Support\Models\Block::find(),
             ]);
 
             if (!isset($app->get('i18n')->translations['support*'])) {
@@ -51,12 +50,8 @@ class Bootstrap implements BootstrapInterface {
                     'position' => 30,
                     'items' => [
                         [
-                            'label' => Yii::t('support', 'Pages'),
+                            'label' => Yii::t('support', 'FAQ'),
                             'url' => '/support/page/index'
-                        ],
-                        [
-                            'label' => Yii::t('support', 'Categories'),
-                            'url' => '/support/category/index'
                         ],
                     ]
                 ];
