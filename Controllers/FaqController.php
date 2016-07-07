@@ -6,7 +6,7 @@ use Yii;
 use jarrus90\Support\SupportFinder;
 use jarrus90\Core\Web\Controllers\FrontController as Controller;
 
-class FrontController extends Controller {
+class FaqController extends Controller {
 
     /**
      * @var SupportFinder 
