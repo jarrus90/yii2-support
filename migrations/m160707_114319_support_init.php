@@ -13,16 +13,6 @@ class m160707_114319_support_init extends \yii\db\Migration {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%support_page}}', [
-            'id' => $this->primaryKey(),
-            'key' => $this->string(255)->notNull(),
-            'lang_code' => $this->string(10)->notNull(),
-            'title' => $this->string(255)->notNull(),
-            'content' => $this->text()->notNull(),
-                ], $tableOptions);
-        $this->createIndex('support_page_unique', '{{%support_page}}', ['key', 'lang_code'], true);
-        $this->addForeignKey('fk-support_page_lang', '{{%support_page}}', 'lang_code', '{{%languages}}', 'code', 'CASCADE', 'RESTRICT');
-
         $this->createTable('{{%support_category}}', [
             'id' => $this->primaryKey(),
             'key' => $this->string(255)->notNull(),
@@ -33,20 +23,26 @@ class m160707_114319_support_init extends \yii\db\Migration {
         $this->createIndex('support_category_unique', '{{%support_category}}', ['key', 'lang_code'], true);
         $this->addForeignKey('fk-support_category_lang', '{{%support_category}}', 'lang_code', '{{%languages}}', 'code', 'CASCADE', 'RESTRICT');
 
-        $this->createTable('{{%support_category_page}}', [
-            'page_key' => $this->string(255)->notNull(),
-            'category_key' => $this->string(255)->notNull(),
+        $this->createTable('{{%support_page}}', [
+            'id' => $this->primaryKey(),
+            'key' => $this->string(255)->notNull(),
+            'lang_code' => $this->string(10)->notNull(),
+            'title' => $this->string(255)->notNull(),
+            'content' => $this->text()->notNull(),
+            'category_key' => $this->string(255),
                 ], $tableOptions);
-        $this->addPrimaryKey('pk-support_category_page', '{{%support_category_page}}', ['page_key', 'category_key']);
+        $this->createIndex('support_page_unique', '{{%support_page}}', ['key', 'lang_code'], true);
+        $this->addForeignKey('fk-support_page_lang', '{{%support_page}}', 'lang_code', '{{%languages}}', 'code', 'CASCADE', 'RESTRICT');
+
     }
 
     /**
      * Drop tables.
      */
     public function down() {
-        $this->dropForeignKey('fk-support_category_lang', '{{%support_category}}');
         $this->dropForeignKey('fk-support_page_lang', '{{%support_page}}');
-        $this->dropTable('{{%support_category_page}}');
+        $this->dropForeignKey('fk-support_page_category', '{{%support_page}}');
+        $this->dropForeignKey('fk-support_category_lang', '{{%support_category}}');
         $this->dropTable('{{%support_category}}');
         $this->dropTable('{{%support_page}}');
     }
