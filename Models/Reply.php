@@ -80,7 +80,7 @@ class Reply extends ActiveRecord {
      * @return \yii\data\ActiveDataProvider
      */
     public function search($params) {
-        $query = static::find()->with('childs');
+        $query = static::find()->with('from');
         $dataProvider = new \yii\data\ActiveDataProvider([
             'query' => $query,
             'pagination' => [
