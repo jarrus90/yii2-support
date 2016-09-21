@@ -4,9 +4,10 @@ namespace jarrus90\Support\Controllers;
 
 use Yii;
 use yii\base\Module as BaseModule;
-use jarrus90\Support\SupportFinder;
-use jarrus90\Admin\Web\Controllers\AdminCrudAbstract;
 use yii\filters\AccessControl;
+use jarrus90\Support\SupportFinder;
+use jarrus90\Core\Web\Controllers\AdminCrudAbstract;
+
 class PageController extends AdminCrudAbstract {
 
     /**
@@ -32,6 +33,7 @@ class PageController extends AdminCrudAbstract {
             ],
         ];
     }
+
     /**
      * List of available upload actions
      * 
@@ -56,9 +58,9 @@ class PageController extends AdminCrudAbstract {
         $this->finder = $finder;
         parent::__construct($id, $module, $config);
     }
-    
+
     public function beforeAction($action) {
-        if(parent::beforeAction($action)) {
+        if (parent::beforeAction($action)) {
             Yii::$app->view->title = Yii::t('support', 'FAQ');
             Yii::$app->view->params['breadcrumbs'][] = Yii::t('support', 'Support');
             Yii::$app->view->params['breadcrumbs'][] = ['label' => Yii::t('support', 'FAQ'), 'url' => ['index']];
