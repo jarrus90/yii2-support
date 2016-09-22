@@ -15,7 +15,7 @@ return [
         ],
     ],
     'aliases' => [
-        '@baseApp' => dirname(__DIR__),
+        '@baseApp' => dirname(dirname(__FILE__)),
         '@jarrus90/Multilang' => VENDOR_DIR . '/jarrus90/yii2-multilang',
         '@jarrus90/User' => VENDOR_DIR . '/jarrus90/yii2-user',
         '@jarrus90/Support' => dirname(dirname(dirname(__DIR__))),
