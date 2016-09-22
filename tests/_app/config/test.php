@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'id' => 'yii2-user-tests',
+    'id' => 'yii2-support-tests',
     'basePath' => dirname(__DIR__),
     'language' => 'en-US',
     'aliases' => [
