@@ -3,6 +3,11 @@
 return [
     'id' => 'yii2-support-console',
     'basePath' => dirname(__DIR__),
+    'bootstrap' => [
+        'jarrus90\Multilang\Bootstrap',
+        'jarrus90\User\Bootstrap',
+        'jarrus90\Support\Bootstrap',
+    ],
     'controllerMap' => [
         'migrate' => [
             'class' => 'jarrus90\Core\Console\MigrateController',
