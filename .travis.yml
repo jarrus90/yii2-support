@@ -23,11 +23,12 @@ install:
   - travis_retry composer self-update
   - travis_retry composer global require "codeception/codeception:2.2.x@dev"
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
-  - travis_retry composer update --dev --prefer-dist
+  - travis_retry composer update --prefer-dist
 
 before_script:
   - mysql -e 'create database support_test;'
-  - php tests/_app/yii.php migrate --interactive=0
+  - php tests/_app/yii.php migrate --migrationPath=@jarrus90/User/migrations --interactive=0
+  - php tests/_app/yii.php migrate --migrationPath=@jarrus90/Support/migrations --interactive=0
   - ~/.composer/vendor/bin/codecept build
 
 script: ~/.composer/vendor/bin/codecept run
