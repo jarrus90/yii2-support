@@ -26,9 +26,7 @@ install:
 
 before_script:
   - mysql -e 'create database support_test;'
-  - php tests/_app/yii.php migrate --migrationPath=@jarrus90/Multilang/migrations --interactive=0
-  - php tests/_app/yii.php migrate --migrationPath=@jarrus90/User/migrations --interactive=0
-  - php tests/_app/yii.php migrate --migrationPath=@jarrus90/Support/migrations --interactive=0
+  - php tests/_app/yii.php migrate --interactive=0
   - ~/.composer/vendor/bin/codecept build
 
 script: ~/.composer/vendor/bin/codecept run
