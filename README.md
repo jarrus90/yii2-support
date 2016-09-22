@@ -1,5 +1,7 @@
 # yii2-support
 
+[![Build Status](https://travis-ci.org/jarrus90/yii2-support.svg?branch=master)](https://travis-ci.org/jarrus90/yii2-support)
+
 > **NOTE:** Module is in initial development. Anything may change at any time.
 
 ## Contributing to this project
