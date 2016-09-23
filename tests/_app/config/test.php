@@ -12,7 +12,11 @@ return [
         '@vendor' => VENDOR_DIR,
         '@bower' => VENDOR_DIR . '/bower-asset',
     ],
-    'bootstrap' => ['jarrus90\Support\Bootstrap'],
+    'bootstrap' => [
+        'jarrus90\User\Bootstrap',
+        'jarrus90\Multilang\Bootstrap',
+        'jarrus90\Support\Bootstrap',
+    ],
     'modules' => [
         'user' => [
             'class' => 'jarrus90\User\Module'
