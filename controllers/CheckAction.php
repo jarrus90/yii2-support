@@ -1,6 +1,6 @@
 <?php
 
-namespace jarrus90\Support\Controllers;
+namespace jarrus90\Support\controllers;
 
 use Yii;
 use yii\base\Action;
