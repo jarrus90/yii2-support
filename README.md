@@ -16,7 +16,7 @@ Yii2-support is released under the BSD-3-Clause License. See the bundled [LICENS
 
 YII 2.0
 
-##Usage
+## Usage
 
 1) Install with Composer
 
@@ -29,3 +29,20 @@ YII 2.0
 php composer.phar update
 
 ~~~
+
+## Restrict and split frontend and backend applications
+
+```
+'modules' => [
+    'support' => [
+        'as frontend' => 'jarrus90\Support\filters\FrontendFilter',
+    ],
+],
+```
+```
+'modules' => [
+    'support' => [
+        'as backend' => 'jarrus90\Support\filters\BackendFilter',
+    ],
+],
+```
