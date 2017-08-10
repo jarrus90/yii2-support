@@ -53,14 +53,18 @@ class Module extends BaseModule {
 
     public function getAdminMenu() {
         return [
-            'label' => Yii::t('support', 'Support'),
-            'position' => 30,
-            'icon' => '<i class="fa fa-fw fa-support"></i>',
-            'items' => [
-                [
-                    'label' => Yii::t('support', 'FAQ'),
-                    'url' => '/support/page/index'
-                ],
+            'support' => [
+                'encode' => false,
+                'label' => '<i class="fa fa-fw fa-support"></i>' . Yii::t('support', 'Support'),
+                'position' => 30,
+                'visible' => (Yii::$app->user->can('support_admin') || Yii::$app->user->can('support_publisher')),
+                'items' => [
+                    [
+                        'label' => Yii::t('support', 'FAQ'),
+                        'url' => ['/support/page/index'],
+                        'visible' => Yii::$app->user->can('support_publisher')
+                    ],
+                ]
             ]
         ];
     }
