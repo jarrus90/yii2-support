@@ -33,6 +33,7 @@ $form = ActiveForm::begin([
 ]);
 ?>
 <?= $form->field($model, 'title') ?>
+<?= $form->field($model, 'key') ?>
 <?= $form->field($model, 'description')->widget(\jarrus90\Support\Widgets\Redactor::className(), [
     'clientOptions' => [
         'lang' => Yii::$app->language,
