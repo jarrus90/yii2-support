@@ -4,10 +4,11 @@ namespace jarrus90\Support\Models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\behaviors\SluggableBehavior;
 use jarrus90\Multilang\Models\Language;
+
 class Page extends ActiveRecord {
 
-    use \jarrus90\Support\traits\KeyCodeValidateTrait;
     /**
      * @var Page 
      */
@@ -16,6 +17,17 @@ class Page extends ActiveRecord {
     /** @inheritdoc */
     public static function tableName() {
         return '{{%support_page}}';
+    }
+
+    public function behaviors() {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => ['lang_code', 'title'],
+                'slugAttribute' => 'key',
+                'ensureUnique' => true
+            ],
+        ];
     }
 
     public function scenarios() {
@@ -41,8 +53,7 @@ class Page extends ActiveRecord {
      */
     public function rules() {
         return [
-            'required' => [['key', 'title', 'content', 'lang_code'], 'required', 'on' => ['create', 'update']],
-            'keyValid' => ['key', 'validateKeyCodePair', 'on' => ['create', 'update']],
+            'required' => [['title', 'content', 'lang_code'], 'required', 'on' => ['create', 'update']],
             'langExists' => ['lang_code', 'exist', 'targetClass' => Language::className(), 'targetAttribute' => 'code'],
             'safeSearch' => [['key', 'title', 'lang_code'], 'safe', 'on' => ['search']],
             'categoryExists' => ['category_key', 'exist', 'targetClass' => Category::className(), 'targetAttribute' => 'key']

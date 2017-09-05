@@ -4,7 +4,9 @@ namespace jarrus90\Support\Models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\behaviors\SluggableBehavior;
 use jarrus90\Multilang\Models\Language;
+
 class Category extends ActiveRecord {
 
     use \jarrus90\Support\traits\KeyCodeValidateTrait;
@@ -15,6 +17,17 @@ class Category extends ActiveRecord {
     
     public function setItem($item){
         $this->item = $item;
+    }
+
+    public function behaviors() {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => ['lang_code', 'title'],
+                'slugAttribute' => 'key',
+                'ensureUnique' => true
+            ],
+        ];
     }
 
     /** @inheritdoc */
@@ -45,8 +58,7 @@ class Category extends ActiveRecord {
      */
     public function rules() {
         return [
-            'required' => [['key', 'title', 'description', 'lang_code'], 'required', 'on' => ['create', 'update']],
-            'keyValid' => ['key', 'validateKeyCodePair', 'on' => ['create', 'update']],
+            'required' => [['title', 'description', 'lang_code'], 'required', 'on' => ['create', 'update']],
             'langExists' => ['lang_code', 'exist', 'targetClass' => Language::className(), 'targetAttribute' => 'code'],
             'safeSearch' => [['key', 'title', 'lang_code'], 'safe', 'on' => ['search']],
         ];
