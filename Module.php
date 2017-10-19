@@ -54,7 +54,7 @@ class Module extends BaseModule {
     public function getAdminMenu() {
         return [
             'support' => [
-                'icon' => '<i class="fa fa-fw fa-support"></i>',
+                'icon' => 'fa fa-fw fa-support',
                 'label' => Yii::t('support', 'Support'),
                 'position' => 30,
                 'visible' => (Yii::$app->user->can('support_admin') || Yii::$app->user->can('support_publisher')),
